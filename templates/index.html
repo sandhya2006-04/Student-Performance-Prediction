@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        #result {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Student Performance Prediction</h1>
+
+    <input id="hours" type="number" placeholder="Study Hours">
+
+    <input id="attendance" type="number" placeholder="Attendance (%)">
+
+    <input id="assignment" type="number" placeholder="Assignment Marks">
+
+    <input id="internal" type="number" placeholder="Internal Marks">
+
+    <input id="marks" type="number" placeholder="Previous Marks">
+
+    <input id="sleep" type="number" placeholder="Sleep Hours">
+
+    <br>
+
+    <button onclick="predict()">Predict Next Exam Marks</button>
+
+    <div id="result"></div>
+
+</div>
+<script>
+function predict() {
+
+    let data = {
+        study_hours: Number(document.getElementById("hours").value),
+        attendance_percent: Number(document.getElementById("attendance").value),
+        assignment_marks: Number(document.getElementById("assignment").value),
+        internal_marks: Number(document.getElementById("internal").value),
+        previous_marks: Number(document.getElementById("marks").value),
+        sleep_hours: Number(document.getElementById("sleep").value)
+    };
+
+    fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+
+        document.getElementById("result").innerHTML =
+            "Predicted Next Exam Marks: " +
+            result.predicted_marks +
+            "<br>" +
+            result.remarks;
+
+    })
+    .catch(error => {
+
+        document.getElementById("result").innerHTML =
+            "Prediction Error";
+
+        console.log(error);
+    });
+}
+</script>
+
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        #result {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Student Performance Prediction</h1>
+
+    <input id="hours" type="number" placeholder="Study Hours">
+
+    <input id="attendance" type="number" placeholder="Attendance (%)">
+
+    <input id="assignment" type="number" placeholder="Assignment Marks">
+
+    <input id="internal" type="number" placeholder="Internal Marks">
+
+    <input id="marks" type="number" placeholder="Previous Marks">
+
+    <input id="sleep" type="number" placeholder="Sleep Hours">
+
+    <br>
+
+    <button onclick="predict()">Predict Next Exam Marks</button>
+
+    <div id="result"></div>
+
+</div>
+<script>
+function predict() {
+
+    let data = {
+        study_hours: Number(document.getElementById("hours").value),
+        attendance_percent: Number(document.getElementById("attendance").value),
+        assignment_marks: Number(document.getElementById("assignment").value),
+        internal_marks: Number(document.getElementById("internal").value),
+        previous_marks: Number(document.getElementById("marks").value),
+        sleep_hours: Number(document.getElementById("sleep").value)
+    };
+
+    fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+
+        document.getElementById("result").innerHTML =
+            "Predicted Next Exam Marks: " +
+            result.predicted_marks +
+            "<br>" +
+            result.remarks;
+
+    })
+    .catch(error => {
+
+        document.getElementById("result").innerHTML =
+            "Prediction Error";
+
+        console.log(error);
+    });
+}
+</script>
+
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        #result {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Student Performance Prediction</h1>
+
+    <input id="hours" type="number" placeholder="Study Hours">
+
+    <input id="attendance" type="number" placeholder="Attendance (%)">
+
+    <input id="assignment" type="number" placeholder="Assignment Marks">
+
+    <input id="internal" type="number" placeholder="Internal Marks">
+
+    <input id="marks" type="number" placeholder="Previous Marks">
+
+    <input id="sleep" type="number" placeholder="Sleep Hours">
+
+    <br>
+
+    <button onclick="predict()">Predict Next Exam Marks</button>
+
+    <div id="result"></div>
+
+</div>
+<script>
+function predict() {
+
+    let data = {
+        study_hours: Number(document.getElementById("hours").value),
+        attendance_percent: Number(document.getElementById("attendance").value),
+        assignment_marks: Number(document.getElementById("assignment").value),
+        internal_marks: Number(document.getElementById("internal").value),
+        previous_marks: Number(document.getElementById("marks").value),
+        sleep_hours: Number(document.getElementById("sleep").value)
+    };
+
+    fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+
+        document.getElementById("result").innerHTML =
+            "Predicted Next Exam Marks: " +
+            result.predicted_marks +
+            "<br>" +
+            result.remarks;
+
+    })
+    .catch(error => {
+
+        document.getElementById("result").innerHTML =
+            "Prediction Error";
+
+        console.log(error);
+    });
+}
+</script>
+
+
+</body>
+</html>
